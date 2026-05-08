@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Used Car Price Prediction</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+        }
+
+        .container{
+            background:white;
+            width:100%;
+            max-width:500px;
+            padding:35px;
+            border-radius:15px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:25px;
+            color:#333;
+            font-size:28px;
+        }
+
+        form{
+            display:flex;
+            flex-direction:column;
+            gap:15px;
+        }
+
+        input{
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            font-size:15px;
+            transition:0.3s;
+        }
+
+        input:focus{
+            border-color:#4a90e2;
+            outline:none;
+            box-shadow:0 0 8px rgba(74,144,226,0.3);
+        }
+
+        button{
+            background:#4a90e2;
+            color:white;
+            border:none;
+            padding:14px;
+            border-radius:8px;
+            font-size:16px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#357abd;
+        }
+
+        .prediction{
+            margin-bottom:20px;
+            text-align:center;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            padding:18px;
+            border-radius:12px;
+            color:white;
+            font-size:24px;
+            font-weight:bold;
+            box-shadow:0 8px 20px rgba(0,0,0,0.2);
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop{
+            0%{
+                transform:scale(0.8);
+                opacity:0;
+            }
+
+            100%{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+
+        @media (max-width:600px){
+
+            .container{
+                padding:25px;
+            }
+
+            h1{
+                font-size:24px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚗 Used Car Price Prediction</h1>
+
+        {% if prediction is not none %}
+            <div class="prediction" id="predictionBox">
+                🎉 Predicted Price: ₹ {{ prediction }}
+            </div>
+
+            <script>
+                window.onload = function () {
+                    document.getElementById("predictionBox")
+                        .scrollIntoView({ behavior: "smooth" });
+                };
+            </script>
+        {% endif %}
+
+        <form method="POST">
+
+            <input type="text" name="Make" placeholder="Make" required>
+
+            <input type="text" name="Model" placeholder="Model" required>
+
+            <input type="number" name="Year" placeholder="Year" required>
+
+            <input type="number" name="KM's driven" placeholder="KM Driven" required>
+
+            <input type="text" name="Fuel" placeholder="Fuel" required>
+
+            <input type="text" name="Registration city" placeholder="Registration City" required>
+
+            <input type="text" name="Transmission" placeholder="Transmission" required>
+
+            <input type="text" name="Assembly" placeholder="Assembly" required>
+
+            <input type="text" name="Condition" placeholder="Condition" required>
+
+            <button type="submit">Predict Price</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

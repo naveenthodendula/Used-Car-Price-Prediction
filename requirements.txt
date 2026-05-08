@@ -1,0 +1,7 @@
+1.	Setup VS Code
+2.	Install Python
+3.	Install Libraries
+4.	Train Model
+5.	Run Flask App
+6.	Push to GitHub
+7.	Deploy on Render
